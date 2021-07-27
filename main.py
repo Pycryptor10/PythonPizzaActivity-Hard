@@ -18,7 +18,7 @@ except Error as e:
 # initailising all variables
 cursor = connection.cursor()
 
-# ACTIVITY HERE
+# ACTIVITY 1
 # fill list below with all possible commands. look at the functions in the while loop to get index of each command
 possibleCommands = []
 
@@ -31,7 +31,7 @@ while True:
     if command == possibleCommands[2]:
         # Displaying "bye" message and closing program
 
-        # ACTIVITY HERE
+        # ACTIVITY 2
         # print goodbye message
 
         print("")
@@ -41,7 +41,7 @@ while True:
     elif command == possibleCommands[0]:
         # printing all supported commands
 
-        # ACTIVITY HERE
+        # ACTIVITY 3
         # write print statement to print all possible commands (find the possibleCommands variable)
 
         print("")
@@ -50,7 +50,7 @@ while True:
     elif command == possibleCommands[3]:
         # running sql query to retrive pizza list
 
-        # ACTIVITY HERE
+        # ACTIVITY 4
         # Please insert list pizza (select) sql command here
         sql_select_Query = ""
 
@@ -71,7 +71,7 @@ while True:
         NewItemDescription = input("Please enter new Pizza Ingredients: ")
         # inserting new pizza into database
         
-        # ACTIVITY HERE
+        # ACTIVITY 5
         # Please insert add pizza (insert) sql command here
         sql = ""
 
@@ -80,7 +80,7 @@ while True:
         connection.commit()
         # running sql query to retrive updated pizza list
 
-        # ACTIVITY HERE
+        # ACTIVITY 6
         # Please insert list pizza (select) sql command here
         sql_select_Query = ""
 
@@ -98,7 +98,7 @@ while True:
         searchKey = input("Type here to search for recipes: ")
         # running sql query to retrive pizza list where pizza name is like entered string
 
-        # ACTIVITY HERE
+        # ACTIVITY 7
         # Please insert search pizza (select and with) sql command here. we have already added 3 quotations on each side to deal with sql injection, please enter your command in between
         sql = """"""
 
@@ -121,7 +121,7 @@ while True:
         if sortID == "1":
             # running sql query to retrive sorted pizza list
 
-            # ACTIVITY HERE
+            # ACTIVITY 8
             # Please insert order pizza (select and orderby) sql command here (this is for ID Ascending)
             sql_select_Query = ""
 
@@ -167,7 +167,7 @@ while True:
         # Error message, for invalid command
         # printing all supported commands
 
-        # ACTIVITY HERE
+        # ACTIVITY 9 & 10
         # print error message here and all possible commands (use seperate print statements)
 
         print("")
