@@ -131,7 +131,7 @@ while True:
         if sortID == "2":
             # running sql query to retrive sorted pizza list
 
-            # ACTIVITY HERE
+            # ACTIVITY 8
             # Please insert order pizza (select, orderby and desc) sql command here (this is for ID Descending)
             sql_select_Query = ""
 
@@ -140,7 +140,7 @@ while True:
         if sortID == "3":
             # running sql query to retrive sorted pizza list
 
-            # ACTIVITY HERE
+            # ACTIVITY 8
             # Please insert order pizza (select and orderby) sql command here (this is for Name Ascending)
             sql_select_Query = ""
 
@@ -149,7 +149,7 @@ while True:
         if sortID == "4":
             # running sql query to retrive sorted pizza list
 
-            # ACTIVITY HERE
+            # ACTIVITY 8
             # Please insert order pizza (select, orderby and desc) sql command here (this is for Name Descending)
             sql_select_Query = ""
 
