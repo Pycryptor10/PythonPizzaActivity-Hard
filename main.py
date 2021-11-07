@@ -4,9 +4,7 @@ import sys  # to control exit code
 
 
 def get_pizza_list():
-    sql = "SELECT * from PizzaRecipes"
-
-    cursor.execute(sql)
+    cursor.execute("SELECT * from PizzaRecipes")
     return cursor.fetchall()
 
 
@@ -23,8 +21,8 @@ possibleCommands = [
 
 def get_command_list():
     print("The following commands are available:")
-    for command in possibleCommands:
-        print(command)
+    for availableCommand in possibleCommands:
+        print(availableCommand)
 
 
 # establishing connection to mysql database with try catch statement
@@ -149,7 +147,7 @@ while True:
                     "Please enter sort type (number): "
                     ).strip().lower()
                     )
-                if sortID > 0 and sortID < 5:
+                if 0 < sortID < 5:
                     break
             except ValueError:
                 print("Please insert a number 1-4")
