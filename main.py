@@ -162,10 +162,10 @@ while True:
             4: "PizzaName DESC",
         }
 
-        sql_select_Query = f"SELECT * from PizzaRecipes ORDER BY {sorts[sortID]}"
+        sql = f"SELECT * from PizzaRecipes ORDER BY {sorts[sortID]}"
 
         # execute and fetch correct query
-        cursor.execute(sql_select_Query)
+        cursor.execute(sql)
         records = cursor.fetchall()
 
         # printing pizza list with for loop
