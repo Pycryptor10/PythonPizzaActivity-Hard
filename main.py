@@ -145,10 +145,10 @@ while True:
         while True:
             try:
                 sortID = int(
-                  input(
-                    "Please enter sort type (number): "
+                    input(
+                        "Please enter sort type (number): "
                     ).strip().lower()
-                    )
+                )
                 if sortID > 0 and sortID < 5:
                     break
             except ValueError:
