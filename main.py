@@ -1,20 +1,31 @@
 # importing mysql library
 from mysql.connector import connect, Error
-import sys # to control exit code
+import sys  # to control exit code
+
 
 def get_pizza_list():
-  sql_select_Query = "SELECT * from PizzaRecipes"
+    sql_select_Query = "SELECT * from PizzaRecipes"
 
-  cursor.execute(sql_select_Query)
-  return cursor.fetchall()
+    cursor.execute(sql_select_Query)
+    return cursor.fetchall()
 
-#list of enabled commands to show in help menus
-possibleCommands = ['quit', 'help', 'list pizzas', 'add pizza', 'search pizza', 'sort list']
+
+# list of enabled commands to show in help menus
+possibleCommands = [
+    "quit",
+    "help",
+    "list pizzas",
+    "add pizza",
+    "search pizza",
+    "sort list",
+]
+
 
 def get_command_list():
-  print('The following commands are available:')
-  for command in possibleCommands:
-    print(command)
+    print("The following commands are available:")
+    for command in possibleCommands:
+        print(command)
+
 
 # establishing connection to mysql database with try catch statement
 try:
@@ -39,15 +50,15 @@ while True:
     if command == possibleCommands[0]:
 
         print("Thanks for using, goodbye!")
-        sys.exit(0) # exit as 0
+        sys.exit(0)  # exit as 0
 
     # checking if command is equal to "help"
     elif command == possibleCommands[1]:
         # printing all supported commands
 
-        print('The following commands are available:')
+        print("The following commands are available:")
         for command in possibleCommands:
-          print(command)
+            print(command)
 
     # checking if command is equal to "list pizzas"
     elif command == possibleCommands[2]:
@@ -55,7 +66,15 @@ while True:
         # print a list of pizzas stored
         print("List of Recipes:")
         for row in get_pizza_list():
-            print(str(row[0]) + " - " + str(row[1]) + ": " + str(row[3]) + " = " + str(row[2]))
+            print(
+                str(row[0])
+                + " - "
+                + str(row[1])
+                + ": "
+                + str(row[3])
+                + " = "
+                + str(row[2])
+            )
         print("")
 
     # checking if command is equal to "add pizza"
@@ -63,11 +82,11 @@ while True:
         # taking new pizza name as input
         NewItemName = input("Please enter new Pizza name: ")
         while True:
-          try:
-            NewItemPrice = float(input("Please enter new Pizza price: "))
-            break
-          except ValueError:
-            print("Please insert a valid number (No currency signs)")
+            try:
+                NewItemPrice = float(input("Please enter new Pizza price: "))
+                break
+            except ValueError:
+                print("Please insert a valid number (No currency signs)")
         NewItemDescription = input("Please enter new Pizza Ingredients: ")
         # inserting new pizza into database
         sql = "INSERT INTO PizzaRecipes (pizzaName, PizzaPrice, pizzaIngredients) VALUES (%s, %s, %s)"
@@ -80,49 +99,70 @@ while True:
         # printing updated pizza list with for loop
         print("Updated List of Recipes:")
         for row in get_pizza_list():
-            print(str(row[0]) + " - " + str(row[1]) + ": " + str(row[3]) + " = " + str(row[2]))
+            print(
+                str(row[0])
+                + " - "
+                + str(row[1])
+                + ": "
+                + str(row[3])
+                + " = "
+                + str(row[2])
+            )
         print("")
 
     # checking if command is equal to "search pizza"
     elif command == possibleCommands[4]:
         # taking input for search
         searchKey = input("Type here to search for recipes: ")
-        # run an sql query to retrive pizza list where pizza name is like inputted string
+        # run an sql query to retrive pizza list like inputted string
 
         sql = """SELECT * from PizzaRecipes where pizzaName LIKE %s"""
 
-        adr = ("%"+searchKey+"%", )
+        adr = ("%" + searchKey + "%",)
         cursor.execute(sql, adr)
         records = cursor.fetchall()
         # printing search results
         print("Search result:")
         for row in records:
-            print(str(row[0]) + " - " + str(row[1]) + ": " + str(row[3]) + " = " + str(row[2]))
+            print(
+                str(row[0])
+                + " - "
+                + str(row[1])
+                + ": "
+                + str(row[3])
+                + " = "
+                + str(row[2])
+            )
         print("")
-    
+
     # checking if command is equal to "sort list"
     elif command == possibleCommands[5]:
         # printing possible sorting options
-        print("Please choose sorting type: \n1 - ID Ascending\n2 - ID Descending\n3 - Name Ascending\n4 - Name Descending")
+        print(
+            "Please choose sorting type: \n1 - ID Ascending\n2 - ID Descending\n3 - Name Ascending\n4 - Name Descending"
+        )
         # taking sort type as input
         while True:
-          try:
-            sortID = int(input("Please enter sort type (number): ").strip().lower())
-            if sortID > 0 and sortID < 5:
-              break
-          except ValueError:
-            print("Please insert a number 1-4")
+            try:
+                sortID = int(
+                  input(
+                    "Please enter sort type (number): "
+                    ).strip().lower()
+                    )
+                if sortID > 0 and sortID < 5:
+                    break
+            except ValueError:
+                print("Please insert a number 1-4")
         # checking if sort type 1 is chosen
 
         sorts = {
-          1: "PizzaID ASC",
-          2: "PizzaID DESC",
-          3: "PizzaName ASC",
-          4: "PizzaName DESC",
+            1: "PizzaID ASC",
+            2: "PizzaID DESC",
+            3: "PizzaName ASC",
+            4: "PizzaName DESC",
         }
 
-
-        sql_select_Query = f'SELECT * from PizzaRecipes ORDER BY {sorts[sortID]}'
+        sql_select_Query = f"SELECT * from PizzaRecipes ORDER BY {sorts[sortID]}"
 
         # execute and fetch correct query
         cursor.execute(sql_select_Query)
@@ -131,7 +171,15 @@ while True:
         # printing pizza list with for loop
         print("List of available Recipes:")
         for row in records:
-            print(str(row[0]) + " - " + str(row[1]) + ": " + str(row[3]) + " = " + str(row[2]))
+            print(
+                str(row[0])
+                + " - "
+                + str(row[1])
+                + ": "
+                + str(row[3])
+                + " = "
+                + str(row[2])
+            )
         print("")
 
     # If no valid commands are entered
