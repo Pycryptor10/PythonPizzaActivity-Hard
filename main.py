@@ -4,9 +4,9 @@ import sys  # to control exit code
 
 
 def get_pizza_list():
-    sql_select_Query = "SELECT * from PizzaRecipes"
+    sql = "SELECT * from PizzaRecipes"
 
-    cursor.execute(sql_select_Query)
+    cursor.execute(sql)
     return cursor.fetchall()
 
 
